@@ -1,0 +1,7 @@
+data_path: "D:/MLOps/mlops_training/data/sample.csv"
+#data_path: wrong/path/sample.csv
+model_path: "D:/MLOps/mlops_training/models/model.pkl"
+
+model_params: 
+  random_state: 42
+  C: 10
