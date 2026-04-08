@@ -319,3 +319,21 @@
 2026-03-28 15:23:02,620 - INFO - Saving model...
 2026-03-28 15:23:02,628 - INFO - Model saved successfully to D:/MLOps/mlops_training/models/model.pkl
 2026-03-28 15:23:02,628 - INFO - Training completed succesfully
+2026-04-03 16:52:20,867 - INFO - starting pipeline...
+2026-04-03 16:52:20,917 - INFO - data loaded from data/sample.csv and saved to data/raw.csv
+2026-04-03 16:52:20,940 - INFO - train size: 25, val size:7
+2026-04-03 16:52:20,940 - INFO - data split and saved to data/train.csv and data/val.csv
+2026-04-03 16:52:20,940 - ERROR - pipeline failed : name 'Excep' is not defined
+2026-04-03 16:55:22,852 - INFO - starting pipeline...
+2026-04-03 16:55:22,852 - INFO - data loaded from data/sample.csv and saved to data/raw.csv
+2026-04-03 16:55:22,861 - INFO - train size: 25, val size:7
+2026-04-03 16:55:22,861 - INFO - data split and saved to data/train.csv and data/val.csv
+2026-04-03 16:55:22,861 - ERROR - error in training [Errno 2] No such file or directory: 'config_path'
+2026-04-03 16:55:22,861 - ERROR - pipeline failed : [Errno 2] No such file or directory: 'config_path'
+2026-04-03 17:02:07,974 - INFO - starting pipeline...
+2026-04-03 17:02:07,974 - INFO - data loaded from data/sample.csv and saved to data/raw.csv
+2026-04-03 17:02:07,982 - INFO - train size: 25, val size:7
+2026-04-03 17:02:07,982 - INFO - data split and saved to data/train.csv and data/val.csv
+2026-04-03 17:02:08,023 - INFO - model trained and saved at models/model.pkl
+2026-04-03 17:02:08,023 - ERROR - error in evaluation: module 'joblib' has no attribute 'open'
+2026-04-03 17:02:08,023 - ERROR - pipeline failed : module 'joblib' has no attribute 'open'
