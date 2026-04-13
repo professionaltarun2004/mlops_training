@@ -337,3 +337,26 @@
 2026-04-03 17:02:08,023 - INFO - model trained and saved at models/model.pkl
 2026-04-03 17:02:08,023 - ERROR - error in evaluation: module 'joblib' has no attribute 'open'
 2026-04-03 17:02:08,023 - ERROR - pipeline failed : module 'joblib' has no attribute 'open'
+2026-04-12 17:18:41,291 - INFO - starting pipeline...
+2026-04-12 17:18:41,324 - INFO - data loaded from data/sample.csv and saved to data/raw.csv
+2026-04-12 17:18:41,340 - INFO - train size: 25, val size:7
+2026-04-12 17:18:41,340 - INFO - data split and saved to data/train.csv and data/val.csv
+2026-04-12 17:18:41,357 - INFO - model trained and saved at models/model.pkl
+2026-04-12 17:18:41,357 - ERROR - error in evaluation: module 'joblib' has no attribute 'open'
+2026-04-12 17:18:41,357 - ERROR - pipeline failed : module 'joblib' has no attribute 'open'
+2026-04-12 17:20:53,289 - INFO - starting pipeline...
+2026-04-12 17:20:53,296 - INFO - data loaded from data/sample.csv and saved to data/raw.csv
+2026-04-12 17:20:53,301 - INFO - train size: 25, val size:7
+2026-04-12 17:20:53,301 - INFO - data split and saved to data/train.csv and data/val.csv
+2026-04-12 17:20:53,310 - INFO - model trained and saved at models/model.pkl
+2026-04-12 17:20:53,333 - INFO - evaluation complted. accuracy: 0.7142857142857143
+2026-04-12 17:20:53,333 - INFO - metrics saved at metrics/metrics.json
+2026-04-12 17:20:53,333 - INFO - pipeline completed successfully
+2026-04-12 17:36:35,990 - INFO - starting pipeline...
+2026-04-12 17:36:38,230 - INFO - data loaded from data/sample.csv and saved to data/raw.csv
+2026-04-12 17:36:38,240 - INFO - train size: 25, val size:7
+2026-04-12 17:36:38,241 - INFO - data split and saved to data/train.csv and data/val.csv
+2026-04-12 17:37:06,851 - INFO - model trained and saved at models/model.pkl
+2026-04-12 17:37:06,871 - INFO - evaluation complted. accuracy: 0.7142857142857143
+2026-04-12 17:37:06,871 - INFO - metrics saved at metrics/metrics.json
+2026-04-12 17:37:06,886 - INFO - pipeline completed successfully

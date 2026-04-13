@@ -5,12 +5,13 @@ import json
 from sklearn.metrics import accuracy_score
 from src.logger import get_logger
 import joblib
+import mlflow
 
 logger=get_logger()
 
 def evaluate_task(val_path,model_path,metrics_path):
     try:
-        model=joblib.open(model_path)
+        model=joblib.load(model_path)
         data=pd.read_csv(val_path)
         X_val=data["text"]
         y_val=data["label"]
@@ -18,6 +19,8 @@ def evaluate_task(val_path,model_path,metrics_path):
         preds=model.predict(X_val)
 
         accuracy=accuracy_score(y_val,preds)
+
+        mlflow.log_metric("accuracy",accuracy)
 
         os.makedirs(os.path.dirname(metrics_path),exist_ok=True)
         metrics={
