@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+
+mlruns/
+mlflow.db
+
+logs/
+models/
+
+.venv/
+venv/
+
+.idea/
+.vscode/
