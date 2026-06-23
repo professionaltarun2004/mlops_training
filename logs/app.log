@@ -361,3 +361,4 @@
 2026-04-12 17:37:06,871 - INFO - metrics saved at metrics/metrics.json
 2026-04-12 17:37:06,886 - INFO - pipeline completed successfully
 2026-06-23 22:40:37,234 - INFO - logged prediction for text: 'zomato order'
+2026-06-23 22:47:56,589 - INFO - logged prediction for text: 'zomato order'
