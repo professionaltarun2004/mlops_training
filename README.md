@@ -31,6 +31,42 @@ The entire infrastructure is fully containerized and orchestrated using Docker C
 
 ---
 
+## 🧠 Our Approach
+1. **Decoupling Training and Serving**: Training happens as an independent pipeline that pushes artifacts to a centralized registry. The API solely focuses on consuming the 'production' model.
+2. **Cloud-Native Storage**: Overcoming the "Windows path in a Linux container" problem by using MinIO (S3) for artifact storage instead of local mapped volumes.
+3. **Containerized Orchestration**: Using Docker Compose to spin up a unified network where MLflow, MinIO, and FastAPI can communicate securely via service names.
+
+---
+
+## 📂 Project Structure
+
+```text
+mlops_training/
+│
+├── deployment/
+│   └── docker-compose.yml       # Orchestrates FastAPI, MLflow, and MinIO
+├── src/
+│   ├── api/
+│   │   ├── main.py              # FastAPI endpoints (/predict, /health, etc.)
+│   │   ├── predictor.py         # Loads model from MLflow Registry and predicts
+│   │   └── schemas.py           # Pydantic validation schemas
+│   ├── tasks/
+│   │   └── train.py             # Modular training logic
+│   ├── config_validator.py      # Validates YAML configuration
+│   ├── data_loader.py           # Loads dataset
+│   ├── preprocess.py            # Splits data and text prep
+│   ├── select_best_model.py     # MLflow script to find best run & assign 'production' alias
+│   └── train.py                 # Main training pipeline script
+├── config/
+│   └── config.yaml              # Hyperparameters and data paths
+├── data/                        # Local dataset storage
+├── Dockerfile                   # Builds the FastAPI container
+├── requirements.txt             # Python dependencies (includes boto3, mlflow, fastapi)
+└── README.md                    # Project documentation
+```
+
+---
+
 ## 🚀 Features
 
 - **Experiment Tracking:** Logs hyperparameters (`C`, `random_state`, `vectorizer`) and metrics (`train_accuracy`, `val_accuracy`).
