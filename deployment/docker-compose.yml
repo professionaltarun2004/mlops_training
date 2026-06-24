@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # ----------------------------------------
+  # 1. MINIO (S3-compatible Artifact Store)
+  # ----------------------------------------
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000" # API port
+      - "9001:9001" # Web UI port
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+
+  # ----------------------------------------
+  # 2. MLFLOW SERVER
+  # ----------------------------------------
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.14.0
+    ports:
+      - "5000:5000"
+    environment:
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+    depends_on:
+      - minio
+    volumes:
+      - mlflow_data:/mlflow
+    command: >
+      mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root s3://mlflow-artifacts --host 0.0.0.0 --allowed-hosts localhost,localhost:5000,mlflow,mlflow:5000
+
+  # ----------------------------------------
+  # 3. FASTAPI PREDICTOR
+  # ----------------------------------------
+  api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+    depends_on:
+      - mlflow
+
+volumes:
+  minio_data:
+  mlflow_data:

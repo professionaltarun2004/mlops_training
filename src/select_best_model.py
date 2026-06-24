@@ -1,5 +1,7 @@
 import mlflow
 
+mlflow.set_tracking_uri("http://localhost:5000")
+
 #step 1 : set experiment 
 
 experiment_name="text_classifier_v3"

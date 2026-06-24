@@ -9,9 +9,9 @@ logger=get_logger()
 class Predictor: 
 
     def __init__(self):
-        mlflow.set_tracking_uri(
-            "http://host.docker.internal:5000"
-        )
+        import os
+        tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5000")
+        mlflow.set_tracking_uri(tracking_uri)
         self.model=mlflow.sklearn.load_model(
             "models:/TextClassifier@production"
         )

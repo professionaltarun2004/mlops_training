@@ -8,6 +8,8 @@ from src.logger import get_logger
 from src.config_validator import validate_config
 import mlflow
 import mlflow.sklearn
+
+mlflow.set_tracking_uri("http://localhost:5000")
 from sklearn.metrics import accuracy_score
 import joblib
 from sklearn.pipeline import Pipeline

@@ -43,3 +43,14 @@ def metrics():
 
 def home():
     return {"message": "Welcome to MLOPs Training"}
+
+@app.get("/health")
+def health():
+    return {"status":"healthy"}
+
+@app.get("/model-info")
+def model_info():
+    return {
+        "model_name":"TextClassifier",
+        "alias":"production"
+    }
